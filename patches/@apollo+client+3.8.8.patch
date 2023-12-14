@@ -1,8 +1,25 @@
 diff --git a/node_modules/@apollo/client/link/http/http.cjs b/node_modules/@apollo/client/link/http/http.cjs
-index cc1fdae..38848f2 100644
+index cc1fdae..b8af827 100644
 --- a/node_modules/@apollo/client/link/http/http.cjs
 +++ b/node_modules/@apollo/client/link/http/http.cjs
-@@ -580,6 +580,7 @@ var createHttpLink = function (linkOptions) {
+@@ -499,8 +499,12 @@ var createHttpLink = function (linkOptions) {
+         credentials: requestOptions.credentials,
+         headers: requestOptions.headers,
+     };
++    console.log(`linkOptions before`);
++    console.log(linkOptions);
+     return new core.ApolloLink(function (operation) {
+         var chosenURI = selectURI(operation, uri);
++        console.log(`chosenURI`);
++        console.log(chosenURI);
+         var context = operation.getContext();
+         var clientAwarenessHeaders = {};
+         if (context.clientAwareness) {
+@@ -577,9 +581,11 @@ var createHttpLink = function (linkOptions) {
+                 return utils.fromError(parseError);
+             }
+         }
++        
          return new utilities.Observable(function (observer) {
              var currentFetch = preferredFetch || utilities.maybe(function () { return fetch; }) || backupFetch;
              var observerNext = observer.next.bind(observer);
@@ -10,3 +27,11 @@ index cc1fdae..38848f2 100644
              currentFetch(chosenURI, options)
                  .then(function (response) {
                  var _a;
+@@ -611,6 +617,7 @@ var createHttpLink = function (linkOptions) {
+ var HttpLink =  (function (_super) {
+     tslib.__extends(HttpLink, _super);
+     function HttpLink(options) {
++        console.log('HttpLink options');
+         if (options === void 0) { options = {}; }
+         var _this = _super.call(this, createHttpLink(options).request) || this;
+         _this.options = options;

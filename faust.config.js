@@ -10,4 +10,5 @@ export default setConfig({
   experimentalPlugins: [],
   experimentalToolbar: true,
   possibleTypes,
+  useGETForQueries: false
 });

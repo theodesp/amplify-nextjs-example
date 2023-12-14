@@ -8,6 +8,7 @@
     "generate": "faust generatePossibleTypes",
     "stylesheet": "faust generateGlobalStylesheet",
     "start": "faust start",
+    "prebuild": "patch-package",
     "postinstall": "patch-package"
   },
   "dependencies": {

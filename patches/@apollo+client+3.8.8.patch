@@ -1,0 +1,12 @@
+diff --git a/node_modules/@apollo/client/link/http/http.cjs b/node_modules/@apollo/client/link/http/http.cjs
+index cc1fdae..38848f2 100644
+--- a/node_modules/@apollo/client/link/http/http.cjs
++++ b/node_modules/@apollo/client/link/http/http.cjs
+@@ -580,6 +580,7 @@ var createHttpLink = function (linkOptions) {
+         return new utilities.Observable(function (observer) {
+             var currentFetch = preferredFetch || utilities.maybe(function () { return fetch; }) || backupFetch;
+             var observerNext = observer.next.bind(observer);
++            console.debug(`chosenURI: ${chosenURI}`);
+             currentFetch(chosenURI, options)
+                 .then(function (response) {
+                 var _a;

@@ -1,0 +1,21 @@
+diff --git a/node_modules/@faustwp/core/dist/cjs/getWordPressProps.js b/node_modules/@faustwp/core/dist/cjs/getWordPressProps.js
+index 1609b16..b8830e0 100644
+--- a/node_modules/@faustwp/core/dist/cjs/getWordPressProps.js
++++ b/node_modules/@faustwp/core/dist/cjs/getWordPressProps.js
+@@ -41,6 +41,7 @@ async function getWordPressProps(options) {
+             notFound: true,
+         };
+     }
++    console.log(`resolvedUrl: ${resolvedUrl}`);
+     const seedQuery = index_js_2.hooks.applyFilters('seedQueryDocumentNode', seedQuery_js_1.SEED_QUERY, {
+         resolvedUrl,
+     });
+@@ -48,6 +49,8 @@ async function getWordPressProps(options) {
+         query: seedQuery,
+         variables: { uri: resolvedUrl },
+     });
++    console.log(`seedQueryRes`);
++    console.log(seedQueryRes);
+     // Since previews only work for client side, we only need to handle nodeByUri instead of both that and contentNode.
+     const seedNode = (_b = seedQueryRes === null || seedQueryRes === void 0 ? void 0 : seedQueryRes.data) === null || _b === void 0 ? void 0 : _b.nodeByUri;
+     (0, log_js_1.debugLog)(`Seed Node for resolved url: "${resolvedUrl}": `, seedNode);
